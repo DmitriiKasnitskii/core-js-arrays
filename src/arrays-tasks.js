@@ -336,8 +336,16 @@ function calculateBalance(arr) {
  *    createChunks(['a', 'b', 'c', 'd', 'e'], 2) => [['a', 'b'], ['c', 'd'], ['e']]
  *    createChunks([10, 20, 30, 40, 50], 1) => [[10], [20], [30], [40], [50]]
  */
-function createChunks(/* arr, chunkSize */) {
-  throw new Error('Not implemented');
+function createChunks(arr, chunkSize) {
+  const length = Math.ceil(arr.length / chunkSize);
+
+  return Array(length)
+    .fill()
+    .map((_, index) => {
+      const start = index * chunkSize;
+
+      return arr.slice(start, start + chunkSize);
+    });
 }
 
 /**
@@ -408,8 +416,12 @@ function getFalsyValuesCount(arr) {
  *                              [0,0,0,1,0],
  *                              [0,0,0,0,1]]
  */
-function getIdentityMatrix(/* n */) {
-  throw new Error('Not implemented');
+function getIdentityMatrix(n) {
+  return [...Array(n)].map((el, i) => {
+    const arr = [...Array(n)].fill(0);
+    arr[i] = 1;
+    return arr;
+  });
 }
 
 /**
